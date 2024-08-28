@@ -1,0 +1,64 @@
+<div id="myModalRegistrar" class="modal fade" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content-add">
+            <div class="modal-header">
+                <h2 class="titulo_m">Registrar detalle de la zona</h2>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url_for('zona_route.insert') }}" method="POST" class="form-grid" id="area-form-register">
+                    <input id="csrf_token_register" name="csrf_token" type="hidden"
+                        value="{{ form.csrf_token.current_token }}">
+
+                    <div class="form-group-add">
+                        <label for="nombre_zona" id="label-regis-add">Nombre de zona</label>
+                        {{ form.nombre_zona(class="form-control", id="nombre_zona") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="n_puntos" id="label-regis-add"># de puntos</label>
+                        {{ form.n_puntos(class="form-control", id="n_puntos") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="ubicacion" id="label-regis-add">Coordenadas del Polígono</label>
+                        {{ form.ubicacion(class="form-control", id="ubicacion") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="area_cultivada" id="label-regis-add">Área cultivada</label>
+                        {{ form.area_cultivada(class="form-control", id="area_cultivada") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="especie" id="label-regis-add">Especie</label>
+                        {{ form.especie(class="form-control", id="especie") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="variedad" id="label-regis-add">Variedad</label>
+                        {{ form.variedad(class="form-control", id="variedad") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="tratamiento" id="label-regis-add">Tratamiento</label>
+                        {{ form.tratamiento(class="form-control", id="tratamiento") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="secano_regio" id="label-regis-add">Secano/Regio</label>
+                        {{ form.secano_regio(class="form-control", id="secano_regio") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="proteccion_cult" id="label-regis-add">Protección Cultivo</label>
+                        {{ form.proteccion_cult(class="form-control", id="proteccion_cult") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="captac_agua" id="label-regis-add">Captación Agua</label>
+                        {{ form.captac_agua(class="form-control", id="captac_agua") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="descripcion_zona" id="label-regis-add">Descripción Zona</label>
+                        {{ form.descripcion_zona(class="form-control", id="descripcion_zona") }}
+                    </div>
+                    <div class="botones">
+                        {{ form.submit(class="btn-guardar") }}
+                        <button type="button" id="btn-cancelar">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Actualizar inspección</title>
+    <!-- Boxicons CSS -->
+    <link rel="icon" href="{{ url_for('static', filename='img/logo-modal.png') }}" type="image/png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bitacora_style.css') }}">
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="{{ url_for('ins_campo_route.mostrar_inspecciones_campo') }}" class="btn-regresar">
+                <i class='bx bx-chevron-left'></i>
+                <span class="text nav-text">Regresar</span>
+            </a>
+        </div>
+        <div class="navbar-center">
+            <h5>Ver inspección de campo</h5>
+        </div>
+        <div id="div-button" class="navbar-right">
+            <button class="btn-guardar-z" id="btn-inspeccion">
+                <i class='bx bxs-layer'></i>
+                Crear inspección
+            </button>
+        </div>
+    </nav>
+
+    <!--Aqui se insertara los contenedores registrar inspeccion-->
+    {% block contentAddInspección %}
+    {% include 'inspeccion_campo/add_inspeccion.html' %}
+    {% endblock %}
+
+
+    <!--Aqui se insertara los contenedores messageError-->
+    {% block contentMessageError %}
+    {% include 'modalMesege/modal_error.html' %}
+    {% endblock %}
+
+    <!--Aqui se insertara los contenedores messageError-->
+    {% block contentUpdateInspeccion %}
+    {% include 'inspeccion_campo/update_inspeccion.html' %}
+    {% endblock %}
+
+    <div class="container">
+        <section class="info-section">
+            <div class="info-icon">
+                <i class='bx bxs-layer'></i>
+                <span>Inspección</span>
+            </div>
+            <form id="inspeccion-campo-form" method="POST"
+                action="{{ url_for('ins_campo_route.mostrar_inspeccion_campo', id=inspeccion_campo.document_id) }}">
+                <input id="csrf_token_register" name="csrf_token" type="hidden"
+                    value="{{ form.csrf_token.current_token }}">
+                <input id="document_id" type="hidden" value="{{ inspeccion_campo.document_id }}">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="nombre">Nombre:</label>
+                        {{ form.nombre(class="form-control", id="nombre") }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="fecha">Fecha:</label>
+                        {{ form.fecha(class="form-control", id="fecha") }}
+                    </div>
+                </div>
+                <!-- Información de la bitácora -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class='bx bx-book-content'></i> Datos de la bitácora
+                    </div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label for="dat_bitacora">Seleccionar bitácora:</label>
+                                <div class="input-container">
+                                    {{ form.dat_bitacora(class="form-control", id="dat_bitacora",
+                                    oninput="filtrarBitacora('dat_bitacora', 'resultados_dat_bitacora')") }}
+                                </div>
+                                <div id="resultados_dat_bitacora" class="list-group"></div>
+                            </div>
+                            {{ form.id_cuaderno(class="form-control", id="id_cuaderno") }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Datos de las parcelas de detector -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="title-container">
+                            <i class='bx bx-map icon'></i> Datos Parcelas
+                        </div>
+                        <p class="info-zona">Seleccione la parcela a la cual se le realizará el detector</p>
+                    </div>
+                    <div class="card-body">
+                        <!-- Leyenda de colores -->
+                        <div class="legend-container">
+                            <span class="legend-item">
+                                <span class="legend-color selected"></span> Parcela seleccionada
+                            </span>
+                            <span class="legend-item">
+                                <span class="legend-color not-selected"></span> Parcela no seleccionada
+                            </span>
+                        </div>
+                        <div id="mapDiv" style="display: none;">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vuelos -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class='bx bxs-layer'></i>Inspecciones de campo realizadas
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <ul id="lista_inspecciones" class="list-group">
+                                <!-- Aquí iría el listado de sensores -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.js"></script>
+    <script src="{{ url_for('static', filename='js/inspeccion_scripts.js') }}"></script>
+</body>
+
+</html>

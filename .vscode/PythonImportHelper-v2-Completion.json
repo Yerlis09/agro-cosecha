@@ -1,0 +1,290 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {
+            "value": "\n```python\nimport flask\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {
+            "value": "\n```python\nimport flask\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {
+            "value": "\n```python\nimport flask\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {
+            "value": "\n```python\nimport flask\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {
+            "value": "\n```python\nimport flask\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {
+            "value": "\n```python\nimport flask\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {
+            "value": "\n```python\nimport flask\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MongoClient",
+        "importPath": "pymongo",
+        "description": "pymongo",
+        "isExtraImport": true,
+        "detail": "pymongo",
+        "documentation": {
+            "value": "\n```python\nimport pymongo\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson.objectid",
+        "description": "bson.objectid",
+        "isExtraImport": true,
+        "detail": "bson.objectid",
+        "documentation": {
+            "value": "\n```python\nimport bson.objectid\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "MethodView",
+        "importPath": "flask.views",
+        "description": "flask.views",
+        "isExtraImport": true,
+        "detail": "flask.views",
+        "documentation": {
+            "value": "\n```python\nimport flask.views\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Manager",
+        "importPath": "flask_script",
+        "description": "flask_script",
+        "isExtraImport": true,
+        "detail": "flask_script",
+        "documentation": {
+            "value": "\n```python\nimport flask_script\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "app",
+        "importPath": "aplicacion.app",
+        "description": "aplicacion.app",
+        "isExtraImport": true,
+        "detail": "aplicacion.app",
+        "documentation": {
+            "value": "\n```python\nimport aplicacion.app\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Home",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def Home():\n    personas = collection.find({})\n    pageModel = {'title': 'Momgodb crud', 'content':\"Esto es una prueba\", 'data': personas}\n    return render_template('index.html', model=pageModel )\n#creo que no se pude usar la misma url \n@app.route(\"/Persona/\")\n@app.route(\"/Persona/<id>\",methods = ['GET'])\ndef Get_Update_Persona(id=None):\n    try :\n        data = collection.find_one({'_id':    ObjectId(id)})",
+        "detail": "app",
+        "documentation": {
+            "value": "\n```python\nfrom app import Home\n```\n\n```python\n\n\n```\n\n```python\ndef Home():\n    personas = collection.find({})\n    pageModel = {'title': 'Momgodb crud', 'content':\"Esto es una prueba\", 'data': personas}\n    return render_template('index.html', model=pageModel )\n#creo que no se pude usar la misma url \n@app.route(\"/Persona/\")\n@app.route(\"/Persona/<id>\",methods = ['GET'])\ndef Get_Update_Persona(id=None):\n    try :\n        data = collection.find_one({'_id':    ObjectId(id)})\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Get_Update_Persona",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def Get_Update_Persona(id=None):\n    try :\n        data = collection.find_one({'_id':    ObjectId(id)})\n        model = {\"data\" : data, \"id\":id}\n        return render_template('/Person/index.html',model=model)\n    except IndexError as e:\n        return e\n#POST GET PUT  DELETE\n@app.route(\"/CreatePersona\",methods=['POST'])\ndef Post_Persona():",
+        "detail": "app",
+        "documentation": {
+            "value": "\n```python\nfrom app import Get_Update_Persona\n```\n\n```python\n\n\n```\n\n```python\ndef Get_Update_Persona(id=None):\n    try :\n        data = collection.find_one({'_id':    ObjectId(id)})\n        model = {\"data\" : data, \"id\":id}\n        return render_template('/Person/index.html',model=model)\n    except IndexError as e:\n        return e\n#POST GET PUT  DELETE\n@app.route(\"/CreatePersona\",methods=['POST'])\ndef Post_Persona():\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Post_Persona",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def Post_Persona():\n    nombre =  data = request.form['nombre']\n    apellido =  data = request.form['apellido']\n    edad =  data = request.form['edad']\n    email =  data = request.form['email']\n    collection.insert_one({'nombre':nombre,\"apellido\":apellido,\"edad\":edad, \"email\":email})\n    return  redirect(\"/\",302)\n@app.route('/DeletePersona/<id>',methods=[\"DELETE\"])\ndef delete_Persona(id):\n    db.delete_one({'_id': ObjectId(id)})",
+        "detail": "app",
+        "documentation": {
+            "value": "\n```python\nfrom app import Post_Persona\n```\n\n```python\n\n\n```\n\n```python\ndef Post_Persona():\n    nombre =  data = request.form['nombre']\n    apellido =  data = request.form['apellido']\n    edad =  data = request.form['edad']\n    email =  data = request.form['email']\n    collection.insert_one({'nombre':nombre,\"apellido\":apellido,\"edad\":edad, \"email\":email})\n    return  redirect(\"/\",302)\n@app.route('/DeletePersona/<id>',methods=[\"DELETE\"])\ndef delete_Persona(id):\n    db.delete_one({'_id': ObjectId(id)})\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "delete_Persona",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def delete_Persona(id):\n    db.delete_one({'_id': ObjectId(id)})\n    return redirect({'msg': 'usuario eliminado'})\n@app.route('/UpdatePersona/<id>',methods=[\"POST\"])\ndef Update_Persona(id=None):\n    collection.update_one({'_id':    ObjectId(id)}, {'$set': {\n        'nombre': request.form['nombre'],\n        'apellido': request.form['apellido'],\n         'edad': request.form['edad'],\n         'email': request.form['email']",
+        "detail": "app",
+        "documentation": {
+            "value": "\n```python\nfrom app import delete_Persona\n```\n\n```python\n\n\n```\n\n```python\ndef delete_Persona(id):\n    db.delete_one({'_id': ObjectId(id)})\n    return redirect({'msg': 'usuario eliminado'})\n@app.route('/UpdatePersona/<id>',methods=[\"POST\"])\ndef Update_Persona(id=None):\n    collection.update_one({'_id':    ObjectId(id)}, {'$set': {\n        'nombre': request.form['nombre'],\n        'apellido': request.form['apellido'],\n         'edad': request.form['edad'],\n         'email': request.form['email']\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Update_Persona",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def Update_Persona(id=None):\n    collection.update_one({'_id':    ObjectId(id)}, {'$set': {\n        'nombre': request.form['nombre'],\n        'apellido': request.form['apellido'],\n         'edad': request.form['edad'],\n         'email': request.form['email']\n    }})\n    data = {\n        'nombre': request.form['nombre'],\n        'apellido': request.form['apellido'],",
+        "detail": "app",
+        "documentation": {
+            "value": "\n```python\nfrom app import Update_Persona\n```\n\n```python\n\n\n```\n\n```python\ndef Update_Persona(id=None):\n    collection.update_one({'_id':    ObjectId(id)}, {'$set': {\n        'nombre': request.form['nombre'],\n        'apellido': request.form['apellido'],\n         'edad': request.form['edad'],\n         'email': request.form['email']\n    }})\n    data = {\n        'nombre': request.form['nombre'],\n        'apellido': request.form['apellido'],\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\nfrom pymongo import MongoClient\nfrom bson.objectid import ObjectId\n# #comandos \n#  set FLASK_APP=main.py para poner el proyecto de destinacion\nclient = MongoClient('localhost', 27017)#conexion a la base de datos\ndb = client[\"persona\"] #base de datos \ncollection = db[\"Personas\"] #Coleccion \n@app.route(\"/\") #Ruta\ndef Home():",
+        "detail": "app",
+        "documentation": {
+            "value": "\n```python\nfrom app import app\n```\n\n```python\n\n\n```\n\n```python\napp = Flask(__name__)\nfrom pymongo import MongoClient\nfrom bson.objectid import ObjectId\n# #comandos \n#  set FLASK_APP=main.py para poner el proyecto de destinacion\nclient = MongoClient('localhost', 27017)#conexion a la base de datos\ndb = client[\"persona\"] #base de datos \ncollection = db[\"Personas\"] #Coleccion \n@app.route(\"/\") #Ruta\ndef Home():\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "client = MongoClient('localhost', 27017)#conexion a la base de datos\ndb = client[\"persona\"] #base de datos \ncollection = db[\"Personas\"] #Coleccion \n@app.route(\"/\") #Ruta\ndef Home():\n    personas = collection.find({})\n    pageModel = {'title': 'Momgodb crud', 'content':\"Esto es una prueba\", 'data': personas}\n    return render_template('index.html', model=pageModel )\n#creo que no se pude usar la misma url \n@app.route(\"/Persona/\")",
+        "detail": "app",
+        "documentation": {
+            "value": "\n```python\nfrom app import client\n```\n\n```python\n\n\n```\n\n```python\nclient = MongoClient('localhost', 27017)#conexion a la base de datos\ndb = client[\"persona\"] #base de datos \ncollection = db[\"Personas\"] #Coleccion \n@app.route(\"/\") #Ruta\ndef Home():\n    personas = collection.find({})\n    pageModel = {'title': 'Momgodb crud', 'content':\"Esto es una prueba\", 'data': personas}\n    return render_template('index.html', model=pageModel )\n#creo que no se pude usar la misma url \n@app.route(\"/Persona/\")\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "db = client[\"persona\"] #base de datos \ncollection = db[\"Personas\"] #Coleccion \n@app.route(\"/\") #Ruta\ndef Home():\n    personas = collection.find({})\n    pageModel = {'title': 'Momgodb crud', 'content':\"Esto es una prueba\", 'data': personas}\n    return render_template('index.html', model=pageModel )\n#creo que no se pude usar la misma url \n@app.route(\"/Persona/\")\n@app.route(\"/Persona/<id>\",methods = ['GET'])",
+        "detail": "app",
+        "documentation": {
+            "value": "\n```python\nfrom app import db\n```\n\n```python\n\n\n```\n\n```python\ndb = client[\"persona\"] #base de datos \ncollection = db[\"Personas\"] #Coleccion \n@app.route(\"/\") #Ruta\ndef Home():\n    personas = collection.find({})\n    pageModel = {'title': 'Momgodb crud', 'content':\"Esto es una prueba\", 'data': personas}\n    return render_template('index.html', model=pageModel )\n#creo que no se pude usar la misma url \n@app.route(\"/Persona/\")\n@app.route(\"/Persona/<id>\",methods = ['GET'])\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "collection",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "collection = db[\"Personas\"] #Coleccion \n@app.route(\"/\") #Ruta\ndef Home():\n    personas = collection.find({})\n    pageModel = {'title': 'Momgodb crud', 'content':\"Esto es una prueba\", 'data': personas}\n    return render_template('index.html', model=pageModel )\n#creo que no se pude usar la misma url \n@app.route(\"/Persona/\")\n@app.route(\"/Persona/<id>\",methods = ['GET'])\ndef Get_Update_Persona(id=None):",
+        "detail": "app",
+        "documentation": {
+            "value": "\n```python\nfrom app import collection\n```\n\n```python\n\n\n```\n\n```python\ncollection = db[\"Personas\"] #Coleccion \n@app.route(\"/\") #Ruta\ndef Home():\n    personas = collection.find({})\n    pageModel = {'title': 'Momgodb crud', 'content':\"Esto es una prueba\", 'data': personas}\n    return render_template('index.html', model=pageModel )\n#creo que no se pude usar la misma url \n@app.route(\"/Persona/\")\n@app.route(\"/Persona/<id>\",methods = ['GET'])\ndef Get_Update_Persona(id=None):\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "@app.route(\"/Persona/<id>\",methods",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "@app.route(\"/Persona/<id>\",methods = ['GET'])\ndef Get_Update_Persona(id=None):\n    try :\n        data = collection.find_one({'_id':    ObjectId(id)})\n        model = {\"data\" : data, \"id\":id}\n        return render_template('/Person/index.html',model=model)\n    except IndexError as e:\n        return e\n#POST GET PUT  DELETE\n@app.route(\"/CreatePersona\",methods=['POST'])",
+        "detail": "app",
+        "documentation": {
+            "value": "\n```python\nfrom app import @app.route(\"/Persona/<id>\",methods\n```\n\n```python\n\n\n```\n\n```python\n@app.route(\"/Persona/<id>\",methods = ['GET'])\ndef Get_Update_Persona(id=None):\n    try :\n        data = collection.find_one({'_id':    ObjectId(id)})\n        model = {\"data\" : data, \"id\":id}\n        return render_template('/Person/index.html',model=model)\n    except IndexError as e:\n        return e\n#POST GET PUT  DELETE\n@app.route(\"/CreatePersona\",methods=['POST'])\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "Person",
+        "kind": 6,
+        "importPath": "person",
+        "description": "person",
+        "peekOfCode": "class Person(MethodView):\n    def  get(self):\n        return render_template('index.html')\n    def post(self):\n        return \"Test\"",
+        "detail": "person",
+        "documentation": {
+            "value": "\n```python\nfrom person import Person\n```\n\n```python\n\n\n```\n\n```python\nclass Person(MethodView):\n    def  get(self):\n        return render_template('index.html')\n    def post(self):\n        return \"Test\"\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "segun",
+        "kind": 5,
+        "importPath": "segun",
+        "description": "segun",
+        "peekOfCode": "segun = Manager(app)\napp.config['DEBUG'] = True # Ensure debugger will load.\nif __name__ == '__main__':\n    segun.run()",
+        "detail": "segun",
+        "documentation": {
+            "value": "\n```python\nfrom segun import segun\n```\n\n```python\n\n\n```\n\n```python\nsegun = Manager(app)\napp.config['DEBUG'] = True # Ensure debugger will load.\nif __name__ == '__main__':\n    segun.run()\n```\n",
+            "supportThemeIcons": false
+        }
+    },
+    {
+        "label": "app.config['DEBUG']",
+        "kind": 5,
+        "importPath": "segun",
+        "description": "segun",
+        "peekOfCode": "app.config['DEBUG'] = True # Ensure debugger will load.\nif __name__ == '__main__':\n    segun.run()",
+        "detail": "segun",
+        "documentation": {
+            "value": "\n```python\nfrom segun import app.config['DEBUG']\n```\n\n```python\n\n\n```\n\n```python\napp.config['DEBUG'] = True # Ensure debugger will load.\nif __name__ == '__main__':\n    segun.run()\n```\n",
+            "supportThemeIcons": false
+        }
+    }
+]

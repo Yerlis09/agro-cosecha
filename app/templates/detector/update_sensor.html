@@ -1,0 +1,58 @@
+<!-- Modal para Actualizar Sensor -->
+<div id="myModalActualizarSensor" class="modal fade" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="titulo_m">Actualizar Información del Sensor</h2>
+            </div>
+            <div class="modal-body">
+                <form id="formActualizarSensor" method="POST" class="form-grid">
+                    <input id="csrf_token_update" name="csrf_token" type="hidden"
+                        value="{{ form.csrf_token.current_token }}">
+
+                    <!-- Campo: Sensor -->
+                    <div class="form-group">
+                        <label for="sensor" id="label_sensor">Sensor</label>
+                        {{ sensor_form.sensor(class="form-control", id="sensor_actualizar") }}
+                    </div>
+
+                    <!-- Campo: Fecha de inicio -->
+                    <div class="form-group">
+                        <label for="fecha_inicio" id="label_fecha_inicio">Fecha de inicio</label>
+                        {{ sensor_form.fecha_inicio(class="form-control", id="fecha_inicio_actualizar") }}
+                    </div>
+
+                    <!-- Campo: Hora de inicio -->
+                    <div class="form-group">
+                        <label for="hora_inicio" id="label_hora_inicio">Hora de inicio</label>
+                        {{ sensor_form.hora_inicio(class="form-control", id="hora_inicio_actualizar") }}
+                    </div>
+
+                    <!-- Campo: Hora de fin -->
+                    <div class="form-group">
+                        <label for="hora_fin" id="label_hora_fin">Hora de fin</label>
+                        {{ sensor_form.hora_fin(class="form-control", id="hora_fin_actualizar") }}
+                    </div>
+
+                    <!-- Campo: Observación -->
+                    <div class="form-group">
+                        <label for="observ" id="label_observ">Observación</label>
+                        {{ sensor_form.observ(class="form-control", id="observ_actualizar") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ sensor_form.listLayerId(class="form-control", id="listLayerId_actualizar") }}
+                        {{ sensor_form.listOutLayerId(class="form-control", id="listOutLayerId_actualizar") }}
+                    </div>
+
+                    <!-- Botón: Actualizar -->
+                    <div class="botones">
+                        {{ sensor_form.submit1(class="btn-guardar") }}
+                        <button type="button" id="btn-cancelar-actualizar" class="btn btn-secondary"
+                            data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

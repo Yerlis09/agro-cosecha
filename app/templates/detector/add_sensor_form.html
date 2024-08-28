@@ -1,0 +1,60 @@
+<!-- Modal -->
+<div id="myModalSensor" class="modal fade" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="titulo_m">Registrar Información del Sensor</h2>
+            </div>
+            <div class="modal-body">
+                <form id="formSensor" action="{{ url_for('detectores_route.agregar_sensor', id=detector.document_id) }}"
+                    method="POST" class="form-grid">
+                    <input id="csrf_token_register" name="csrf_token" type="hidden"
+                        value="{{ form.csrf_token.current_token }}">
+
+                    <!-- Campo: Sensor -->
+                    <div class="form-group">
+                        <label for="sensor" id="label_sensor">Sensor</label>
+                        {{ sensor_form.sensor(class="form-control", id="sensor") }}
+                    </div>
+
+                    <!-- Campo: Fecha de inicio -->
+                    <div class="form-group">
+                        <label for="fecha_inicio" id="label_fecha_inicio">Fecha de inicio</label>
+                        {{ sensor_form.fecha_inicio(class="form-control", id="fecha_inicio") }}
+                    </div>
+
+                    <!-- Campo: Hora de inicio -->
+                    <div class="form-group">
+                        <label for="hora_inicio" id="label_hora_inicio">Hora de inicio</label>
+                        {{ sensor_form.hora_inicio(class="form-control", id="hora_inicio") }}
+                    </div>
+
+                    <!-- Campo: Hora de fin -->
+                    <div class="form-group">
+                        <label for="hora_fin" id="label_hora_fin">Hora de fin</label>
+                        {{ sensor_form.hora_fin(class="form-control", id="hora_fin") }}
+                    </div>
+
+                    <!-- Campo: Observación -->
+                    <div class="form-group">
+                        <label for="observ" id="label_observ">Observación</label>
+                        {{ sensor_form.observ(class="form-control", id="observ") }}
+                    </div>
+
+                    <!-- Campo: Hidden layers -->
+                    <div class="form-group">
+                        {{ sensor_form.listLayerId(class="form-control", id="tbxListLayerId") }}
+                        {{ sensor_form.listOutLayerId(class="form-control", id="tbxListOutLayerId") }}
+                    </div>
+
+                    <!-- Botón: Registrar -->
+                    <div class="botones">
+                        {{ sensor_form.submit1(class="btn-guardar") }}
+                        <button type="button" id="btn-cancelar" class="btn btn-secondary"
+                            data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

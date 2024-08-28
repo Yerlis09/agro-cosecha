@@ -1,0 +1,84 @@
+<div id="myModalRegistrar" class="modal fade" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="titulo_m">Registrar Cliente</h2>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url_for('cliente_route.insert') }}" method="POST" class="form-grid" id="cliente-form-register">
+                    <input id="csrf_token_register" name="csrf_token" type="hidden"
+                        value="{{ form.csrf_token.current_token }}">
+
+                    <div class="form-group">
+                        <label for="tipo_identificacion" id="label_registro">Tipo documento</label>
+                        {{ form.tipo_identificacion(class="form-control", id="tipo_identificacion") }}
+                    </div>
+                    <!-- Campos adicionales si es Responsable -->
+                    <div class="form-group">
+                        <label for="registro_identificacion" id="label_registro">Nro. identificación</label>
+                        {{ form.identificacion(class="form-control", id="registro_identificacion") }}
+                    </div>
+                    <!-- Campo: Nombre -->
+                    <div class="form-group">
+                        <label for="registro_nombres" id="label_registro">Nombres</label>
+                        {{ form.nombres(class="form-control", id="registro_nombres") }}
+                    </div>
+                    <!-- Campo: Apellidos -->
+                    <div class="form-group">
+                        <label for="registro_apellido" id="label_registro">Apellidos</label>
+                        {{ form.apellido(class="form-control", id="registro_apellido") }}
+                    </div>
+                    <!-- Campo: Departamento -->
+                    <div class="form-group">
+                        <label for="registro_departamento" id="label_registro">Departamento</label>
+                        {{ form.departamento(class="form-control", id="registro_departamento") }}
+                    </div>
+                    <!-- Campo: Municipio -->
+                    <div class="form-group">
+                        <label for="registro_municipio" id="label_registro">Municipio</label>
+                        {{ form.municipio(class="form-control", id="registro_municipio", disabled=True) }}
+                    </div>
+                    <!-- Campo: Dirección -->
+                    <div class="form-group">
+                        <label for="registro_direccion" id="label_registro">Dirección</label>
+                        {{ form.direccion(class="form-control", id="registro_direccion") }}
+                    </div>
+                    <div class="form-group">
+                        <label for="registro_experiencia" id="label_registro">Experiencia</label>
+                        {{ form.experiencia(class="form-control", id="registro_experiencia") }}
+                    </div>
+                    <div class="form-group">
+                        <label for="registro_estudios_r" id="label_registro">Estudios realizados</label>
+                        {{ form.estudios_realizados(class="form-control", id="registro_estudios_r") }}
+                    </div>
+                    <!-- Campo: Correo -->
+                    <div class="form-group">
+                        <label for="registro_correo" id="label_registro">Correo</label>
+                        {{ form.correo(class="form-control", id="registro_correo") }}
+                    </div>
+
+                    <!-- Campo: Clave -->
+                    <div class="form-group">
+                        <label for="registro_clave" id="label_registro">Clave</label>
+                        {{ form.clave(class="form-control", id="registro_clave", required=True) }}
+                    </div>
+                    <!-- Campo: Rol -->
+                    <div class="form-group">
+                        <label for="registro_rol" id="label_registro">Rol</label>
+                        {{ form.rol(class="form-control", id="registro_rol") }}
+                    </div>
+                    <!-- Campo: Celular -->
+                    <div class="form-group">
+                        <label for="registro_celular" id="label_registro">Celular</label>
+                        {{ form.celular(class="form-control", id="registro_celular") }}
+                    </div>
+                    <!-- Botón: Registrar -->
+                    <div class="botones">
+                        {{ form.submit1(class="btn-guardar") }}
+                        <button type="button" id="btn-cancelar">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

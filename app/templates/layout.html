@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{% block title %}Monitoreo de cultivos{% endblock %}</title>
+    <!-- Favicon -->
+     
+    <link rel="icon" href="{{ url_for('static', filename='img/logo-modal.png') }}" type="image/png">
+     <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    {% set roles = {
+        'R-A1': 'Administrador',
+        'R-AG2': 'Agronomo',
+        'R-R3': 'Responsable',
+        'R-AGR4': 'Agricultor',
+        'R-O5': 'Otro'
+    } %}
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{{ url_for('static', filename='img/logo_yellow_perfil.webp') }}" alt="Perfil">
+                </span>
+                <div class="text header-text">
+                    <span class="name">{{ session['user_name'] }}</span>
+                    <span class="rol">{{ roles[session['user_role']] }}</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+            <hr class="sidebar-divider">
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-link">
+                    {% if session.get('permissions') and 'R' in session['permissions'].get('zonas', []) %}
+                    <li class="nav-link">
+                        <a href="{{ url_for('main.zona_view') }}">
+                            <i class='bx bx-map icon'></i>
+                            <span class="text nav-text">Zona</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if session.get('permissions') and 'R' in session['permissions'].get('personas', []) %}
+                    <li class="nav-link">
+                        <a href="{{ url_for('main.cliente_view') }}">
+                            <i class='bx bxs-user-rectangle icon'></i>
+                            <span class="text nav-text">Cliente</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if session.get('permissions') and 'R' in session['permissions'].get('herramienta', []) %}
+                    <li class="nav-link">
+                        <a href="{{ url_for('main.herramienta_view') }}">
+                            <i class='bx bxs-briefcase-alt-2 icon'></i>
+                            <span class="text nav-text">Herramineta</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if session.get('permissions') and 'R' in session['permissions'].get('bitacora', []) %}
+                    <li class="nav-link">
+                        <a href="{{ url_for('main.cuaderno_view') }}">
+                            <i class='bx bx-book-content icon'></i>
+                            <span class="text nav-text">Bitácora</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if session.get('permissions') and 'R' in session['permissions'].get('plan_vuelo', []) %}
+                    <li class="nav-link">
+                        <a href="{{ url_for('main.vuelo_view') }}">
+                            <i class='bx bxs-plane-alt icon'></i>
+                            <span class="text nav-text">Planificación de vuelo</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if session.get('permissions') and 'R' in session['permissions'].get('detectores', []) %}
+                    <li class="nav-link">
+                        <a href="{{ url_for('main.detectores_view') }}">
+                            <i class='bx bx-cross icon'></i>
+                            <span class="text nav-text">Detectores</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if session.get('permissions') and 'R' in session['permissions'].get('inspecciones_campo', []) %}
+                    <li class="nav-link">
+                        <a href="{{ url_for('main.inspecciones_view') }}">
+                            <i class='bx bxs-layer icon'></i>
+                            <span class="text nav-text">Inspección de campo</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if session.get('permissions') and 'R' in session['permissions'].get('protocolos', []) %}
+                    <li class="nav-link">
+                        <a href="{{ url_for('main.protocolos_view') }}">
+                            <i class='bx bx-notepad icon'></i>
+                            <span class="text nav-text">Protocolos</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li>
+                    <a href="{{ url_for('login.logout') }}" class="salir-button">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Salir</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <section id="content" class="home">
+        <!-- Aquí se insertará el contenido específico de cada vista -->
+        {% block content %}
+        {% endblock %}
+    </section>
+    <script src="{{ url_for('static', filename='js/dashboard_scripts.js') }}"></script>
+</body>
+
+</html>

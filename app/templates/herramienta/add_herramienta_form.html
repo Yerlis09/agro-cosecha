@@ -1,0 +1,45 @@
+<div id="myModalRegistrar" class="modal fade" role="dialog" hidden>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="titulo_m">Registrar Herramienta</h2>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url_for('herramienta_route.insert') }}" method="POST">
+                    {{ form.hidden_tag() }}
+
+                    <!-- Campo: Herramienta activa -->
+                    <div class="form-check">
+                        {{ form.activo(class="form-check-input", id="activo") }}
+                        <label class="form-check-label" for="activo_check"
+                            id="label_registro">Activo</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre_equipo" id="label_registro">Nombre del equipo</label>
+                        {{ form.nombre_equipo(class="form-control", id="nombre_equipo") }}
+                    </div>
+                    <div class="form-group">
+                        <label for="registro_funcionalidad_equipo" id="label_registro">Funcionalidad del equipo</label>
+                        {{ form.funcionalidad_equipo(class="form-control", id="registro_funcionalidad_equipo") }}
+                    </div>
+                    <!-- Campo: Fecha de inicio de uso -->
+                    <div class="form-group">
+                        <label for="registro_fecha_inicio_uti" id="label_registro">Fecha inicio de utilización del equipo</label>
+                        {{ form.fecha_inicio_uti(class="form-control", id="registro_fecha_inicio_uti") }}
+                    </div>
+                    <!-- Campo: Fecha fin uso -->
+                    <div class="form-group">
+                        <label for="registro_fecha_fin_uti" id="label_registro">Fecha
+                            fin de utilización del equipo</label>
+                        {{ form.fecha_fin_uti(class="form-control", id="registro_fecha_fin_uti") }}
+                    </div>
+                    <!-- Botón: Registrar -->
+                    <div class="botones">
+                        {{ form.submit(class="btn-guardar") }}
+                        <button type="button" id="btn-cancelar">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

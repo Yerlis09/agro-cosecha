@@ -1,0 +1,50 @@
+<div class="container-form register hide" id="registerForm">
+    <div class="information">
+        <div class="info-childs">
+            <h2>Bienvenido</h2>
+            <p>Para unirte a nuestra comunidad por favor Inicia Sesión con tus datos</p>
+            <input type="button" value="Iniciar Sesión" id="sign-in">
+        </div>
+    </div>
+    <div class="form-information">
+        <div class="form-information-childs">
+            <h2>Crear una Cuenta</h2>
+            <div class="icons">
+                <i class='bx bxl-google'></i>
+                <i class='bx bxl-facebook'></i>
+                <i class='bx bxl-linkedin'></i>
+            </div>
+            <p>o usa tu email para registrarte</p>
+            <form class="form form-register" action="{{ url_for('login.register') }}" method="POST">
+                {{ register_form.hidden_tag() }}
+                <div>
+                    <label>
+                        <i class='bx bx-user'></i>
+                        {{ register_form.user(placeholder="Nombre de Usuario") }}
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <i class='bx bx-envelope'></i>
+                        {{ register_form.email(placeholder="Correo Electronico") }}
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <i class='bx bx-lock-alt'></i>
+                        {{ register_form.password(placeholder="Contraseña") }}
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <i class='bx bx-lock-alt'></i>
+                        {{ register_form.confirm_password(placeholder="Confirmar Contraseña") }}
+                    </label>
+                </div>
+                {{ register_form.submit(class="btn-submit", id=btn_registrarse) }}
+                <div class="alerta-error">Todos los campos son obligatorios</div>
+                <div class="alerta-exito">Te registraste correctamente</div>
+            </form>
+        </div>
+    </div>
+</div>

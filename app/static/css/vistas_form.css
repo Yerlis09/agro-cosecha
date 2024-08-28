@@ -1,0 +1,489 @@
+/* Estilo general para la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f3cf;
+    margin: 0;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+/* Estilo del contenedor principal */
+.modal.fade {
+    padding: 50px;
+    flex-grow: 1;
+}
+
+form.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+}
+
+form.form-grid1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+}
+
+/* Estilos para los campos del formulario */
+.form-group {
+    display: flex;
+    flex-direction: row; /* Alineación en fila */
+    align-items: center; /* Alineación vertical */
+    flex-wrap: nowrap;
+    align-content: flex-start;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+}
+
+/*Estilo de las vistas*/
+
+h2 {
+    color: var(--sidebar-color);
+    font-size: 32px;
+}
+
+.linea {
+    border-bottom: 1px solid #0c1f0c;
+}
+
+/* Estilos para la barra de búsqueda */
+.search-bar {
+    margin-block: 20px;
+    margin-left: 5px;
+}
+
+#searchInput {
+    padding: 10px;
+    border: 1px solid #eaf8c6;
+    border-radius: 2px;
+    flex-grow: 1;
+    margin-right: 10px;
+    width: 500px;
+}
+
+#searchBtn {
+    background-color: rgb(218, 144, 0);
+    color: rgb(3, 15, 1, 0.918);
+    padding: 12px;
+    border: 3px solid rgb(218, 144, 0);
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+#newCuadernoBtn {
+    background-color: rgb(3, 15, 1, 0.918);
+    color: rgb(218, 144, 0);
+    padding: 12px;
+    border: 3px solid rgba(8, 41, 2, 0.918);
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.btn-nuevo {
+    background-color: rgba(3, 15, 1, 0.918);
+    color: rgb(218, 144, 0);
+    padding: 10px;
+    border: 3px solid rgba(8, 41, 2, 0.918);
+    border-radius: 10px;
+    cursor: pointer;
+    width: 148px;
+    font-weight: bold;
+    margin: 0px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Estilos para la tabla */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid var(--sidebar-color);
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid var(--primary-color-light);
+    font-size: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--sidebar-color);
+    color: var(--toggle-color);
+}
+
+.dataTables_info {
+    font-size: 12px;
+}
+
+.accion_boton {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+}
+
+.accion_boton button {
+    padding: 5px 19px;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+
+button.edit-btn {
+    background-color: transparent;
+    color: white;
+    width: 70px;
+}
+
+button.delete-btn {
+    background-color: transparent;
+    color: white;
+    width: 70px;
+}
+
+.edit-btn .icon_ee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    font-size: 19px;
+    color: blue;
+}
+
+
+.delete-btn .icon_eli {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    font-size: 17px;
+    color: red;
+}
+
+
+.edit-btn,
+.icon_ee:hover {
+    background-color: transparent;
+    color: var(--sidebar-color);
+}
+
+.delete-btn,
+.icon_eli:hover {
+    background-color: transparent;
+    color: var(--sidebar-color);
+}
+
+
+.btn-nuevo:hover {
+    background-color: rgba(3, 15, 1, 0.8);
+    border-color: rgba(8, 41, 2, 0.8);
+}
+
+/* El modal (oculto por defecto) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-dialog {
+    position: relative;
+    margin: auto;
+    padding: 15px;
+    border: 1px solid #9d9b9b;
+    width: auto;
+    background-color: #f4f3cf;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    max-width: 80%;
+    height: 85vh;
+    z-index: 1050;
+}
+
+.titulo_m {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 30px;
+}
+
+/* Modal header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+/* Modal body */
+.modal-body {
+    position: relative;
+    padding: 30px;
+}
+
+#label_registro {
+    display: inline-block;
+    width: 170px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+label {
+    color: #0c1f0c;
+    font-size: 12px;
+}
+
+select {
+    margin: 14px;
+    width: 300px;
+}
+
+a {
+    color: #0c1f0c;
+    font-size: 12px;
+}
+
+input[type="search"] {
+    padding: 10px;
+    border: 1px solid #eaf8c6;
+    border-radius: 2px;
+    flex-grow: 1;
+    margin-right: 5px;
+    width: 300px;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: transparent;
+    padding: 4px;
+    width: 42px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    color: #ff0000 !important;
+}
+
+select {
+    width: 250px;
+    padding: 2px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    margin-bottom: 8px;
+    margin-left: -5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"] {
+    width: 250px;
+    padding: 2px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    margin-bottom: 8px;
+    margin-left: -5px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus select:focus {
+    border-color: #fbe8c2;
+    outline: none;
+    box-shadow: 0 0 8px #8dbb8d;
+}
+
+input[type="date" i] {
+    width: 380px;
+    padding: 2px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+.btn-guardar,
+.btn-guardar-e,
+.btn_update_cancelar, 
+#btn-cancelar,
+#btn-cancelar-update {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.btn-guardar,
+.btn-guardar-e {
+    background-color: #0c1f0c;
+    color: #E49F15;
+    /* align-items: end; */
+}
+
+#btn-cancelar,
+.btn_update_cancelar,
+#btn-cancelar-update {
+    background-color: #ff0202;
+    color: #ffffff;
+}
+
+.botones {
+    display: flex;
+    justify-content: flex-end; /* Alineación al final a la derecha */
+    padding-top: 20px; /* Espacio superior */
+    gap: 10px;/* Alineación vertical */
+}
+
+#map {
+    width: 100%;
+    height: 600px;
+    margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+    .modal-dialog {
+        max-width: 90%;
+        margin: 10px;
+        height: 150vh;
+        z-index: 1050;
+        
+    }
+    .form-grid {
+        grid-template-columns: 1fr; /* Colapsar a una columna en pantallas más pequeñas */
+        gap: 10px;
+    }
+    .modal-footer {
+        flex-direction: column; /* Colocar los botones en una columna en pantallas más pequeñas */
+        align-items: stretch; /* Alinear los botones al ancho completo */
+    }
+    .btn-guardar,
+    #btn-cancelar {
+        width: 100%; /* Ancho completo para los botones */
+        margin: 5px 0; /* Margen vertical para espacio entre botones */
+    }
+}
+
+@media (min-width: 769px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas para pantallas más grandes */
+        gap: 5px;
+    }
+    .modal-footer {
+        flex-direction: row; /* Alinear los botones en fila */
+        justify-content: flex-end; /* Alinear los botones a la derecha */
+    }
+    .btn-guardar,
+    #btn-cancelar {
+        width: auto; /* Ancho automático para los botones */
+        margin: 10px; /* Margen para separación entre botones */
+    }
+}
+
+/* Estilos para el modal  delete*/
+.modalDiseTodo {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 80px;
+}
+
+.modal-content-diseTodo {
+    background-color: var(--body-color);
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 35%;
+    border-radius: 5px;
+}
+
+.close-button {
+    color: #0c1f0c;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    width: 50x;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-danger {
+    background-color: red;
+    color: white;
+}
+.btn-close{
+    background-color: #383737;
+    color: #ffffff;
+}
+
+.btn-ok{
+    background-color: #0c1f0c;
+    color: #ffffff; 
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+h5{
+    font-size: 16px;
+}
+
+.mnsg{
+    padding-top: 7px;
+    font-size: 14px;
+}

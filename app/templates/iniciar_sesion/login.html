@@ -1,0 +1,46 @@
+<div class="container-form login" id="loginForm">
+    <div class="information">
+        <div class="info-childs">
+            <img src="{{ url_for('static', filename='img/logo-2.png') }}" alt="Logo Agro-Cosecha" class="logo">
+            <p>Para unirte a nuestra comunidad por favor Inicia Sesión con tus datos</p>
+        </div>
+    </div>
+    <div class="form-information">
+        <div class="form-information-childs">
+            <h2>Iniciar Sesión</h2>
+            <div class="icons">
+                <i class='bx bxl-google'></i>
+                <i class='bx bxl-github'></i>
+                <i class='bx bxl-linkedin'></i>
+            </div>
+            <p>o Iniciar Sesión con una cuenta</p>
+            <form action="{{ url_for('login.login') }}" method="POST" class="form form-login">
+                {{ login_form.hidden_tag()}}
+                <div>
+                    <label>
+                        <i class='bx bx-envelope'></i>
+                        {{ login_form.email(placeholder="Correo Electronico", id="id_email") }}
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <i class='bx bx-lock-alt'></i>
+                        {{ login_form.password(placeholder="Contraseña", id="id_pass") }}
+                    </label>
+                </div>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class="flash-{{ category }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                {{ login_form.submit(class="btn-submit", id="btn_login") }}
+                <div class="alerta-error">Todos los campos son obligatorios</div>
+                <div class="alerta-exito">Te registraste correctamente</div>
+            </form>
+        </div>
+    </div>
+</div>

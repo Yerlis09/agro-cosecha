@@ -1,0 +1,105 @@
+{% extends "/layout.html" %}
+
+{% block title %}
+Inspección de campo - Monitoreo de cultivos
+{% endblock %}
+
+{% block content %}
+<link rel="icon" href="{{ url_for('static', filename='img/logo-modal.png') }}" type="image/png">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/vistas_form.css') }}">
+<div id="clienteForm" class="container">
+    <h2>Inspección de campo</h2>
+    <hr class="linea">
+    <!-- Barra de búsqueda -->
+    <div class="search-bar">
+        {% if session.get('permissions') and 'C' in session['permissions'].get('inspecciones_campo', []) %}
+        <a href="{{ url_for('ins_campo_route.insert') }}" class="btn-nuevo">Registrar inspección</a>
+        {% endif %}
+    </div>
+    <table id="v_table" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Bitácora</th>
+                <th>Nombre</th>
+                <th>Fecha de creación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inspeccion in inspecciones_campo %}
+            <tr>
+                <td>{{ inspeccion.nombre_bitacora }}</td>
+                <td>{{ inspeccion.nombre }}</td>
+                <td>{{ inspeccion.fecha }}</td>
+                <td>
+                    <div class="accion_boton">
+                        {% if session.get('permissions') and 'U' in session['permissions'].get('inspecciones_campo', [])
+                        %}
+                        <a href="{{ url_for('ins_campo_route.mostrar_inspeccion_campo', id=inspeccion.document_id) }}"
+                            class="edit-btn">
+                            <i class='bx bxs-edit-alt icon_ee'></i>
+                        </a>
+                        {% endif %}
+                        {% if session.get('permissions') and 'D' in session['permissions'].get('inspecciones_campo', [])
+                        %}
+                        <form
+                            action="{{ url_for('ins_campo_route.delete_inspeccion_campo', id=inspeccion.document_id) }}"
+                            method="POST" style="display:inline;">
+                            {{ form.hidden_tag() }}
+                            <button type="submit" class="delete-btn"><i class='bx bxs-trash icon_eli'></i></button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+            {% if not inspecciones_campo %}
+            <tr>
+                <td colspan="7">No hay registros de inspecciones de campo disponibles</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+<script src="{{ url_for('static', filename='js/inspeccion_scripts.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#v_table').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
+            "language": {
+                "decimal": "",
+                "emptyTable": "No hay datos disponibles en la tabla",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                "infoEmpty": "Mostrando 0 a 0 de 0 entradas",
+                "infoFiltered": "(filtrado de _MAX_ entradas totales)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "No se encontraron registros coincidentes",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ": activar para ordenar la columna ascendente",
+                    "sortDescending": ": activar para ordenar la columna descendente"
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

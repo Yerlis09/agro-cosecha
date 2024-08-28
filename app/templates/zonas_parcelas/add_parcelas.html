@@ -1,0 +1,45 @@
+<div id="myModalRegistrar" class="modal fade" role="dialog" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content-add">
+            <div class="modal-header">
+                <h2 class="titulo_m">Guardar parcela</h2>
+            </div>
+            <div class="modal-body">
+                <form action="{{ url_for('zona_route.agregar_parcela', id=zona['document_id']) }}" method="POST"
+                    class="form-grid" id="parcela-form-register">
+                    <input id="csrf_token_register" name="csrf_token" type="hidden"
+                        value="{{ form.csrf_token.current_token }}">
+                    <input type="hidden" id="zonaId" value="{{ zona['document_id'] }}">
+                    <div class="form-group-add">
+                        <label for="nombre_parcela" id="label-regis-add">Nombre de parcela</label>
+                        {{ form.nombre_parcela(class="form-control", id="nombre_parcela") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="n_hileras" id="label-regis-add">Número de hilerass</label>
+                        {{ form.n_hileras(class="form-control", id="n_hileras") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="separacion_hilera" id="label-regis-add">Separación entre hileras</label>
+                        {{ form.separacion_hilera(class="form-control", id="separacion_hilera") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="separacion_planta" id="label-regis-add">Separación entre plantas</label>
+                        {{ form.separacion_planta(class="form-control", id="separacion_planta") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="n_plantas" id="label-regis-add">Cantidad de plantas</label>
+                        {{ form.n_plantas(class="form-control", id="n_plantas") }}
+                    </div>
+                    <div class="form-group-add">
+                        <label for="coordP" id="label-regis-add">Ubicación de la parcela</label>
+                        {{ form.coordP(class="form-control", id="coordParcela") }}
+                    </div>
+                    <div class="botones">
+                        {{ form.submit(class="btn-guardar") }}
+                        <button type="button" id="btn-cancelar">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
